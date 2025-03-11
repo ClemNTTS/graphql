@@ -40,6 +40,17 @@ type AuditElement = {
   };
 };
 
+export const getToken = () => {
+  const cookies = document.cookie.split("; ");
+  for (const cookie of cookies) {
+    const [name, value] = cookie.split("=");
+    if (name === "token") {
+      return value;
+    }
+  }
+  return null;
+};
+
 export default function Home() {
   const [Xp, setXp] = useState("");
   const [Done, setDone] = useState("");
@@ -408,17 +419,6 @@ export default function Home() {
     </div>
   );
 }
-
-export const getToken = () => {
-  const cookies = document.cookie.split("; ");
-  for (const cookie of cookies) {
-    const [name, value] = cookie.split("=");
-    if (name === "token") {
-      return value;
-    }
-  }
-  return null;
-};
 
 interface XPData {
   amount: number;
