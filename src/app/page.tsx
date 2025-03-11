@@ -13,6 +13,7 @@ import {
   Legend,
   CategoryScale,
 } from "chart.js";
+import { getToken } from "../utils/auth"; // Import the getToken function
 
 ChartJS.register(
   LineElement,
@@ -38,17 +39,6 @@ type AuditElement = {
       type: string;
     };
   };
-};
-
-export const getToken = () => {
-  const cookies = document.cookie.split("; ");
-  for (const cookie of cookies) {
-    const [name, value] = cookie.split("=");
-    if (name === "token") {
-      return value;
-    }
-  }
-  return null;
 };
 
 export default function Home() {
